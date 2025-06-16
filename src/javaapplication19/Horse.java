@@ -13,18 +13,19 @@ import javaapplication19.ZodiacAnimal;
  * @author elena
  */
 public class Horse extends ZodiacAnimal {
-    private int endurance;
-    private boolean canGallop;
-    private int speedBoost;
-    private Trainer trainer;
+    private int endurance; //horse's endurance value
+    private boolean canGallop; //to determine if horse can gallop
+    private int speedBoost; //speed
+    private Trainer trainer; //horse's trainer
     
     public Horse() {
-        super("Horse");
-        this.baseSpeed = 6;
-        this.endurance = 80;
-        this.canGallop = true;
+        super("Horse"); //calls superclass constructor
+        this.baseSpeed = 6; //sets base speed
+        this.endurance = 80; //sets endurance value
+        this.canGallop = true; //sets canGallop to default value
+        //list of special abilities
         this.specialAbilities = new String[] {"Quick Gallop", "Endurance Run", "Lucky Charge"};
-        this.trainer = new Trainer("Alex");
+        this.trainer = new Trainer("Alex"); //assigns trainer as a default value
     }
     
     /**
@@ -43,29 +44,46 @@ public class Horse extends ZodiacAnimal {
         this.trainer = trainer;
     }   
     
+    /**
+     * executes horse's special move
+     */
     @Override
     public void specialMove() {
         if(canGallop) {
-            gallop();
+            gallop(); //perform gallop move to boost speed
         } else {
-            enduranceRun();
+            enduranceRun(); //perform endurance run to increase speed
         }
     }
     
+    /**
+     * increases speed temporarily
+     */
     public void gallop() {
         baseSpeed += 4;
         speedBoost = 10;
     }
     
+    /**
+     * increases speed and endurance
+     */
     public void enduranceRun() {
         endurance += 15;
         baseSpeed += 1;
     }
     
+    /**
+     * 
+     * @return returns speed boost
+     */
     public int getSpeedBoost() {
         return speedBoost;
     }
     
+    /**
+     * 
+     * @return returns endurance value
+     */
     public int getEndurance() {
         return endurance;
     }

@@ -1,2 +1,6 @@
 elena,5,20
 elena,0,20
+elena,3,20
+￿elena,3,20
+￿elena,3,20
+elena,3,20

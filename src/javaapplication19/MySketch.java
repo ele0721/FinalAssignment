@@ -137,7 +137,7 @@ String[][] animalTrainerData = {
             text("Chinese Zodiac Race", width/2,30); //Display main title at the center
             text("Choose Your Character!", width/2, 80); //Display instruction below the title
             text("Press SPACE to use special ability", width/2, 120);
-            //Loop through all zodiac characters to display them in a  grid
+            //Loop through all zodiac characters to display them in a grid
             for (int i = 0; i < getZodiacNames().length; i++) {
                 int x = (i % 3) * 150 + 100; //calculate x position, creates 3 columns
                 int y = (i / 3) * 140 + 220; //calculate y position, creates rows
@@ -217,14 +217,11 @@ String[][] animalTrainerData = {
             for (int i = 0; i < allRacers.length; i++) { //loops through all racing characters
                 if (allRacers[i] != null) { //check if racer object exists
                     allRacers[i].draw(); //draw the racer on screen
-
-                    // Only move other charaters automatically
-                    if (i != playerCharacterIndex) { // Skip the player's character
+                        if (i != playerCharacterIndex) { //skip the player's character
                         float baseSpeed = getAnimalSpeed(getZodiacNames()[i]); //get base speed for specific animal 
                         float speed = baseSpeed + (i * 0.4f); //change speed variation based on racer index
                         allRacers[i].move(0, (int)-speed); //move racer upward
                     }
-
                     // Keep the boundary checking and lap counting for all racers
                     if(allRacers[i].getX() < 0) { //check if racer has moved to the left
                         allRacers[i].setX(0); //reset their x position to 0 
@@ -275,25 +272,20 @@ String[][] animalTrainerData = {
                 }
             }
             //if left arrow is pressed and player is not at left edge    
-            if (keyCode == LEFT && person.getX() > 0) {
+            if (keyPressed && keyCode == LEFT && person.getX() > 0) {
                 person.move(-moveSpeed, 0); ///move player left
             //if right arrow is pressed and player is not at right edge
-            } else if (keyCode == RIGHT && person.getX() < width - person.getWidth()) {
+            } else if (keyPressed && keyCode == RIGHT && person.getX() < width - person.getWidth()) {
                 person.move(moveSpeed, 0); //move player right
             //if up arrow is pressed and player is not at the top
-            } else if (keyCode == UP && person.getY() > 0) {
+            } else if (keyPressed &&keyCode == UP) {
                 person.move(0, -moveSpeed); //move player up
             //if down arrow is pessed and player is not at the bottom
-            } else if (keyCode == DOWN && person.getY() < height - person.getHeight()) {
+            } else if (keyPressed && keyCode == DOWN && person.getY() < height - person.getHeight()) {
                 person.move(0, moveSpeed); //move player down
             }                
             
-            //if player exists and has moved above screen
-            if(person != null && person.getY() <-100) { 
-                racerLaps[playerCharacterIndex]++; //imcrement player's lap counter
-                person.setY(height + 50); //reset player position to bottom of screen
-                person.setX(50 + (playerCharacterIndex * 80)); //reset player to starting x position
-            }
+
             
             if(person != null && person.getY() <-100) {
                 racerLaps[playerCharacterIndex]++;
@@ -507,32 +499,40 @@ String[][] animalTrainerData = {
         }
     }
     
+    /**
+     * Load high scores from a text file and stores them into the high scores list
+     */
     public void loadScoresFromFile() {
         try {
+            //Create a reader to read from the scores file
             BufferedReader reader = new BufferedReader(new FileReader(scoresFile));
-            if(reader != null) {
-                String line;
-                while((line = reader.readLine()) != null) {
-                    highScores.add(line);
+            if(reader != null) { //if reader is sucessfully loaded
+                String line; 
+                while((line = reader.readLine()) != null) { //read each line from the file until the last line
+                    highScores.add(line); //add each line to the list
                 }
-                reader.close();
-                println("Scores loaded succesfully");
+                reader.close(); 
+                println("Scores loaded succesfully"); //print sucess message
             }
         } catch(IOException e) {
-            println("Could not load scores from file");
+            println("Could not load scores from file"); //print error message
         }
     }
-        
+    
+    /**
+     * Writes each score to a new line in the file
+     */    
     public void saveScoresToFile() {
         try {
+            //Create a writer to wwrite to the file
             FileWriter writer = new FileWriter(scoresFile);
-            for (String score : highScores) {
-                writer.write(score + "\n");
+            for (String score : highScores) { //loop through all scores and write it to the file
+                writer.write(score + "\n"); //write score in a newline
             }
             writer.close();
-            println("Scores saved successfully!");
+            println("Scores saved successfully!"); //print success message
         } catch (Exception e) {
-            println("Error saving scores!");
+            println("Error saving scores!"); //print error message
         }
     }
     

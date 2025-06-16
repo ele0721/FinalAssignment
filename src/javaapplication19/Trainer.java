@@ -9,12 +9,20 @@ package javaapplication19;
  * @author elena
  */
 public class Trainer {
-    private String name;
+    private String name; //trainer's name
     
+    /**
+     * sets trainer name
+     * @param name name of trainer
+     */
     public Trainer(String name) {
         this.name = name;
     }
     
+    /**
+     * 
+     * @return returns trainer's name
+     */
     public String getName() {
         return name;
     }

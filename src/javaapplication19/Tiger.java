@@ -45,25 +45,36 @@ public class Tiger extends ZodiacAnimal {
     @Override
     public void specialMove() {
         if(canJump) {
-            jump();
+            jump(); //jump ability
         } else {
-            fiercePounce();
+            fiercePounce(); //activate strength ability
         }
     }
     
     public void jump() {
-        baseSpeed += 2;
-        speedBoost = 8;
+        baseSpeed += 2; //boost base speed
+        speedBoost = 8; //set the speed boost value
     }
     
+    /**
+     * 
+     * @return returns the speed boost
+     */
     public int getSpeedBoost() {
         return speedBoost;
     }
     
+    /**
+     * increases the tiger's strength
+     */
     public void fiercePounce() {
         strength += 15;
     }
     
+    /**
+     * 
+     * @return returns the strength
+     */
     public int getStrength() {
         return strength;
     }
