@@ -1,3 +1,5 @@
+package javaapplication19;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -14,7 +16,7 @@ public class ZodiacAnimal {
     
     public ZodiacAnimal(String type) {
         this.zodiacType = type;
-        this.baseSpeed = 5;
+        this.baseSpeed = 3;
         this.specialAbilities = new String[3];
     }
     
