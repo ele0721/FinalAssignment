@@ -16,7 +16,7 @@ import java.util.*;
 
 public class MySketch extends PApplet {
 //2D array for storing animal names and their trainers    
-String[][] animalTrainerData = {
+private String[][] animalTrainerData = {
     {"Pig", "Joe"},
     {"Rabbit", "Lin"},
     {"Horse", "Alex"},
@@ -38,8 +38,8 @@ String[][] animalTrainerData = {
     private Person person2; //declare second person object
     private Person[] allRacers; //array containing all racing characters
     private int playerCharacterIndex; //index representing which characters the user chose
-    int stage = 0; //to represent current game stage
-    int selectedcharacter = 0; //index of currently selected character
+    private int stage = 0; //to represent current game stage
+    private int selectedcharacter = 0; //index of currently selected character
     PImage[] zodiacImageObjects = new PImage[6]; //array to hold loaded images
     PImage backgroundImage; //background image
     PImage backgroundImage2; //welcome screen background image
